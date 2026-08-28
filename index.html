@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galone — Air Isi Ulang</title>
+<style>
+  :root{
+    --navy: #0F2B3D;
+    --teal: #1B6E7A;
+    --ice: #EAF4F5;
+    --white: #FFFFFF;
+    --gray: #5A6B72;
+    --line: #D8E4E6;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3{
+    font-family: "Georgia", "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header{
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 24px;
+  }
+
+  .logo{
+    font-family: "Georgia", serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .logo span{ color: var(--navy); }
+
+  nav ul{
+    display:flex;
+    gap: 28px;
+    list-style:none;
+  }
+
+  nav ul li a{
+    font-size: 0.95rem;
+    color: var(--navy);
+    transition: color 0.15s ease;
+  }
+
+  nav ul li a:hover{ color: var(--teal); }
+
+  /* Hero */
+  .hero{
+    padding: 72px 24px 56px;
+    background: var(--ice);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero .wrap{
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .eyebrow{
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .hero h1{
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    max-width: 620px;
+  }
+
+  .hero p{
+    max-width: 520px;
+    color: var(--gray);
+    font-size: 1.05rem;
+  }
+
+  .btn{
+    display:inline-block;
+    margin-top: 8px;
+    padding: 13px 26px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.15s ease;
+  }
+
+  .btn:hover{ background: var(--navy); }
+
+  /* Sections */
+  section{
+    padding: 56px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section h2{
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  section > .wrap > p.lead{
+    color: var(--gray);
+    max-width: 620px;
+    margin-bottom: 32px;
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-grid p{ color: var(--gray); margin-bottom: 14px; }
+
+  .stat-box{
+    background: var(--ice);
+    border-radius: 4px;
+    padding: 22px;
+  }
+
+  .stat-box .num{
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .stat-box .label{
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .stat-row{
+    display:flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .stat-row > div{ flex:1; }
+
+  /* Services */
+  .service-list{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card{
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .service-card h3{
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--navy);
+  }
+
+  .service-card p{
+    color: var(--gray);
+    font-size: 0.95rem;
+  }
+
+  /* Why us */
+  .why-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+  }
+
+  .why-list li{
+    padding-left: 20px;
+    border-left: 2px solid var(--teal);
+    color: var(--gray);
+  }
+
+  .why-list li strong{
+    display:block;
+    color: var(--navy);
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  /* Contact */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contact-item{ margin-bottom: 18px; }
+
+  .contact-item .label{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .contact-item .value{
+    color: var(--navy);
+    font-size: 1.02rem;
+  }
+
+  .note{
+    font-size: 0.85rem;
+    color: var(--gray);
+    background: var(--ice);
+    padding: 14px 16px;
+    border-radius: 4px;
+  }
+
+  footer{
+    padding: 28px 24px;
+    text-align:center;
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 720px){
+    nav ul{ gap: 16px; }
+    .about-grid, .contact-grid{ grid-template-columns: 1fr; }
+    .service-list{ grid-template-columns: 1fr; }
+    .why-list{ grid-template-columns: 1fr; }
+    .stat-row{ flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="logo">Galo<span>ne</span></div>
+    <nav>
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Depot Air Isi Ulang</div>
+    <h1>Air minum bersih, sampai ke rumah tanpa repot.</h1>
+    <p>Galone menyediakan isi ulang air minum higienis dengan layanan antar cepat untuk rumah dan usaha di sekitar Anda.</p>
+    <a class="btn" href="#kontak">Hubungi Kami</a>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="wrap">
+    <h2>Tentang Galone</h2>
+    <div class="about-grid">
+      <div>
+        <p>Galone adalah usaha isi ulang air minum yang melayani kebutuhan air bersih harian untuk rumah tangga, kantor, dan usaha kecil.</p>
+        <p>Setiap galon diproses melalui penyaringan bertahap dan sinar UV sebelum diisikan, sehingga air yang diterima pelanggan aman untuk langsung dikonsumsi.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-row">
+          <div>
+            <div class="num">±15 menit</div>
+            <div class="label">Waktu antar rata-rata</div>
+          </div>
+          <div>
+            <div class="num">Setiap hari</div>
+            <div class="label">Jam operasional</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <h2>Layanan</h2>
+    <p class="lead">Pilihan layanan isi ulang air yang bisa disesuaikan dengan kebutuhan Anda.</p>
+    <div class="service-list">
+      <div class="service-card">
+        <h3>Isi Ulang Galon</h3>
+        <p>Bawa galon kosong Anda, kami isi ulang dengan air minum yang sudah disaring dan disterilkan.</p>
+      </div>
+      <div class="service-card">
+        <h3>Galon Baru + Isi</h3>
+        <p>Untuk pelanggan baru yang belum memiliki galon, tersedia paket galon baru berisi air siap minum.</p>
+      </div>
+      <div class="service-card">
+        <h3>Antar ke Lokasi</h3>
+        <p>Pesan dari rumah atau kantor, air galon diantar langsung tanpa perlu keluar rumah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="keunggulan">
+  <div class="wrap">
+    <h2>Kenapa Pilih Galone</h2>
+    <ul class="why-list">
+      <li><strong>Air Higienis</strong>Disaring dan disterilkan sebelum diisikan ke galon.</li>
+      <li><strong>Harga Terjangkau</strong>Harga isi ulang bersaing untuk pemakaian harian.</li>
+      <li><strong>Antar Cepat</strong>Pesanan diantar dalam waktu singkat ke lokasi Anda.</li>
+      <li><strong>Layanan Ramah</strong>Respons cepat untuk setiap pesanan dan pertanyaan.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="wrap">
+    <h2>Kontak</h2>
+    <p class="lead">Hubungi kami untuk memesan atau menanyakan layanan.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="label">WhatsApp / Telepon</div>
+          <div class="value">0838-6683-2887</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Alamat</div>
+          <div class="value">Jl.Palka KM 22, Kota Serang</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Jam Operasional</div>
+          <div class="value">08.00 – 20.00 (Setiap Hari)</div>
+        </div>
+      </div>
+      <div class="note">
+        Company Profile Website Created by Luvy Ferdinan X TJKT 2 for Tugas LS Structured.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Galone. Semua hak dilindungi.
+</footer>
+
+</body>
+</html>
